@@ -4,17 +4,17 @@
 ## Запуск скрипта в докер-контейнере
 
 ```
-Переименовать файл .env.example в .env
-```
-
-```
 cd ./script
 ```
 
 ```
-docker build --tag 'script' .
+Переименовать файл .env.example в .env
 ```
 
 ```
-docker run --rm -v ${pwd}/data:/opt/app/data --env-file .env 'script'
+docker-compose build
+```
+
+```
+docker-compose run --rm script-cpu
 ```
