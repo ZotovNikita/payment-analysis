@@ -299,3 +299,4 @@ pyrightconfig.json
 
 catboost_info/
 !service/.env
+!script/.env
