@@ -296,3 +296,5 @@ pyrightconfig.json
 # Ignore all local history of files
 .history
 .ionide
+
+catboost_info/
