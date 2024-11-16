@@ -1,0 +1,39 @@
+services:
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.backend
+    container_name: backend
+    restart: always
+    volumes:
+      - ./backend/models:/opt/app/models
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+    environment:
+      - APP__TITLE=${BACKEND_TITLE}
+      - APP__HOST=${BACKEND_HOST}
+      - APP__PORT=${BACKEND_PORT}
+    env_file:
+      - .env
+    networks:
+      - bivnet
+
+  # streamlit:
+  #   build:
+  #     context: .
+  #     dockerfile: ./Dockerfile.streamlit
+  #   container_name: streamlit
+  #   restart: always
+  #   ports:
+  #     - ${FRONTEND_PORT}:8501
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - backend
+  #   networks:
+  #     - bivnet
+
+networks:
+  bivnet:
+    driver: bridge

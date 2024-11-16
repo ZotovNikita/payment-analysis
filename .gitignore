@@ -298,3 +298,4 @@ pyrightconfig.json
 .ionide
 
 catboost_info/
+!service/.env
