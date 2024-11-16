@@ -5,8 +5,6 @@ RUN apt-get update && \
 
 WORKDIR /opt/app
 
-RUN pip install torch==2.5.1 --no-cache-dir --index-url https://download.pytorch.org/whl/cpu
-
 COPY ./requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r ./requirements.txt
 

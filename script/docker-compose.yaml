@@ -12,9 +12,7 @@ services:
           memory: 8G
     restart: "no"
     volumes:
+      - ./models:/opt/app/models
       - ./data:${INPUT_FILES_DIR}
-      - ${LOCAL_HUGGINGFACE_MODELS}:${HUGGINGFACE_MODELS}
-    environment:
-      - HF_HOME=${HUGGINGFACE_MODELS}
     env_file:
       - .env

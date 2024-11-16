@@ -14,6 +14,10 @@ class Settings(BaseSettings):
 
     input_files_dir: Path = './data'
 
+    vectorizer_path: Path
+    label_encoder_path: Path
+    classifier_path: Path
+
 
 # Функция для создания настроек (подгрузит данные из .env)
 def load_settings() -> Settings:
