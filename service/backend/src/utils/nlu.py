@@ -40,6 +40,8 @@ def generate_prediction(texts: list[str] | np.ndarray) -> np.ndarray:
 
 def continue_training(existing_model_path: Path, save_path: Path, X_text: pd.Series, y_text: pd.Series, verbose: bool):
     X_new = vectorizer.transform(X_text)
+    X_new = pd.DataFrame(X_new.toarray(), columns=vectorizer.get_feature_names_out())
+
     y_new = label_encoder.transform(y_text)
 
     classifier.fit(
