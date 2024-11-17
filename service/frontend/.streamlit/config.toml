@@ -1,0 +1,11 @@
+[browser]
+serverAddress = "0.0.0.0"
+serverPort = 8501
+enableCORS = false
+
+[client]
+showSidebarNavigation = false
+
+
+[theme]
+base="dark"
