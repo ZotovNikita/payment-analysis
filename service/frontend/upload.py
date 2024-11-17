@@ -16,7 +16,7 @@ async def upload():
         data = pd.read_csv(tsv_file, encoding='utf-8', header=None,  names=['index', 'date', 'cash', 'description', 'type'], sep='\t', index_col=0)
 
         if st.button('Получить предсказание'):
-            url = f'{path}/predict/batch'
+            url = f'http://localhost:8910/predict/batch'
             data = data['description']
             headers = {"Content-Type": "application/json"}
             response = requests.post(url, headers=headers, data=json.dumps(list(data))).json()
@@ -24,5 +24,6 @@ async def upload():
             data['тип платежа'] = response
             st.session_state['predicted_data'] = response
             st.subheader("Данные:")
+            st.write(response)
 
-            st.write(data)
+            # st.write(data)
