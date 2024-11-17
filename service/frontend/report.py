@@ -16,3 +16,5 @@ async def report():
         fig, ax = plt.subplots()
         sns.barplot(x='Class', y='Count', data=class_distribution, ax=ax)
         st.pyplot(fig)
+    else:
+        st.write('Загрузите данные ...')
