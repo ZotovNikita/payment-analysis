@@ -13,7 +13,9 @@ __all__ = ['payment_analysis_plugin']
 async def payment_analysis_plugin(settings: Settings) -> AsyncGenerator:
     fastapi = ioc.resolve(FastAPI)
 
-    fit_classification_view = FitClassification()
+    task_storage = {}
+
+    fit_classification_view = FitClassification(settings, task_storage)
     fastapi.add_api_route(
         path='/fit',
         name='Дообучить классификатор',

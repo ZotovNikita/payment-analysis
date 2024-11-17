@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import joblib
 import numpy as np
 import pandas as pd
@@ -14,6 +16,7 @@ __all__ = [
     'classifier',
     'generate_embeddings_df',
     'generate_prediction',
+    'continue_training',
 ]
 
 settings = load_settings()
@@ -33,3 +36,17 @@ def generate_prediction(texts: list[str] | np.ndarray) -> np.ndarray:
     embeddings_df = generate_embeddings_df(texts)
     y_pred = classifier.predict(embeddings_df)
     return label_encoder.inverse_transform(y_pred.ravel())
+
+
+def continue_training(existing_model_path: Path, save_path: Path, X_text: list[str], y_text: list[str], verbose: bool):
+    X_new = vectorizer.transform(X_text)
+    y_new = label_encoder.transform(y_text)
+
+    classifier.fit(
+        X_new, y_new,
+        init_model=existing_model_path,
+        verbose=verbose,
+        early_stopping_rounds=50,
+    )
+
+    joblib.dump(classifier, save_path)
