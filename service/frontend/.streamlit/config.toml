@@ -6,6 +6,5 @@ gatherUsageStats = false
 [client]
 showSidebarNavigation = false
 
-
 [theme]
 base="dark"

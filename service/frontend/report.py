@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 
 async def report():
-    if 'predicted_data' not in st.session_state:
+    if 'predicted_data' in st.session_state:
         class_names = list(set(st.session_state['predicted_data']))
         y_pred = st.session_state['predicted_data']
 

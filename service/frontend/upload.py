@@ -24,5 +24,6 @@ async def upload():
             data['тип платежа'] = response
             st.session_state['predicted_data'] = response
             st.subheader("Данные:")
+            st.write(response)
 
-            st.write(data)
+            # st.write(data)
