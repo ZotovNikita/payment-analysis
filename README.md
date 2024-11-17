@@ -24,3 +24,32 @@ docker-compose build
 ```
 docker-compose run --rm script-cpu
 ```
+
+
+## Папка `service`
+
+В данной папке находится `docker-compose.yaml` для запуска бекенда для взаимодействия с API модели и фронтенда для визуализации работы с API.
+
+Backend расположен по адресу `http://localhost:8910`, Swagger - `http://localhost:8910/docs`
+
+Frontend расположен по адресу `http://localhost:8558`
+
+Для запуска необходимо
+
+1. Перейдите в папку `service/`
+
+```
+cd ./service
+```
+
+2. Соберите образ
+
+```
+docker-compose build
+```
+
+3. Запустите контейнеры
+
+```
+docker-compose up
+```
