@@ -23,7 +23,7 @@ class FitClassification:
         def proccess(content: bytes) -> str:
             data = BytesIO(content)
             train_df = pd.read_csv(data, encoding='utf-8', header=None,  names=['X', 'y'], sep='\t', dtype=str)
-            continue_training(self._settings.classifier_path, self._settings.classifier_path, train_df['X'].values, train_df['y'].values, verbose=True)
+            continue_training(self._settings.classifier_path, self._settings.classifier_path, train_df['X'], train_df['y'], verbose=True)
 
         uid = str(uuid4())
         task = asyncio.create_task(asyncio.to_thread(proccess, content=contents), name=uid)
