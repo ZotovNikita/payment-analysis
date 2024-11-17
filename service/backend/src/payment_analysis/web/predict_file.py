@@ -17,6 +17,7 @@ class PredictFile:
         def proccess(content: bytes) -> str:
             data = BytesIO(content)
             csv = pd.read_csv(data, encoding='utf-8', header=None,  names=['index', 'date', 'cash', 'description'], sep='\t')
+            csv['description'] = csv['description'].astype(str)
 
             preds = generate_prediction(csv['description'])
 

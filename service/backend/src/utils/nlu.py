@@ -20,7 +20,8 @@ settings = load_settings()
 
 vectorizer: TfidfVectorizer = joblib.load(settings.vectorizer_path)
 label_encoder: LabelEncoder = joblib.load(settings.label_encoder_path)
-classifier: CatBoostClassifier = joblib.load(settings.classifier_path)
+classifier = CatBoostClassifier()
+classifier.load_model(settings.classifier_path)
 
 
 def generate_embeddings_df(texts: list[str] | np.ndarray) -> pd.DataFrame:

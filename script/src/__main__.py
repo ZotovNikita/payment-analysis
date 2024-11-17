@@ -22,7 +22,8 @@ def main() -> None:
 
     vectorizer: TfidfVectorizer = joblib.load(settings.vectorizer_path)
     label_encoder: LabelEncoder = joblib.load(settings.label_encoder_path)
-    classifier: CatBoostClassifier = joblib.load(settings.classifier_path)
+    classifier = CatBoostClassifier(task_type='cpu')
+    classifier.load_model(settings.classifier_path)
 
     logging.info('- = - Поиск файлов .tsv в директории %s - = -', settings.input_files_dir)
 
@@ -32,6 +33,7 @@ def main() -> None:
 
         try:
             df = pd.read_csv(path, encoding='utf-8', header=None,  names=['index', 'date', 'cash', 'description'], sep='\t')
+            df['description'] = df['description'].astype(str)
 
             embeddings = vectorizer.transform(df['description'])
             embeddings_df = pd.DataFrame(embeddings.toarray(), columns=vectorizer.get_feature_names_out())
