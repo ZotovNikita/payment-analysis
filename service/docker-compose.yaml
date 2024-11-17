@@ -19,20 +19,20 @@ services:
     networks:
       - bivnet
 
-  # streamlit:
-  #   build:
-  #     context: .
-  #     dockerfile: ./Dockerfile.streamlit
-  #   container_name: streamlit
-  #   restart: always
-  #   ports:
-  #     - ${FRONTEND_PORT}:8501
-  #   env_file:
-  #     - .env
-  #   depends_on:
-  #     - backend
-  #   networks:
-  #     - bivnet
+  streamlit:
+   build:
+     context: .
+     dockerfile: ./Dockerfile.streamlit
+   container_name: streamlit
+   restart: always
+   ports:
+     - ${FRONTEND_PORT}:8501
+   env_file:
+     - .env
+   depends_on:
+     - backend
+   networks:
+     - bivnet
 
 networks:
   bivnet:
